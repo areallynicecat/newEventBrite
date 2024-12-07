@@ -1,158 +1,173 @@
 /* Overall Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    top: 0;
-    margin: 20px 20px;
-    width: 98%;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: #1DB954; /* Spotify Green */
-    border-radius: 20px;
-    color: black;
-  }
-  
-  /* Navbar left (logo and links) */
-  .navbar-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 2rem;
-    margin-right: 20px;
-    font-weight: bolder;
-  }
-  
-  .navbar-links {
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar-link {
-    text-decoration: none;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  
-  .navbar-link:hover {
-    color: #333;
-  }
-  
-  /* Navbar center (search field and button) */
-  .navbar-center {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .search-input {
-    padding: 10px;
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 20px;
-    background-color: black;
-    color: white;
-    font-size: 1rem;
-    outline: none;
-    width: 250px;
-  }
-  
-  .search-btn {
-    padding: 10px 20px;
-    background-color: rgb(34, 33, 33);
-    border: none;
-    color: #1DB954; /* Spotify Green */
-    font-weight: bold;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  } 
-  
-  .search-btn:hover {
-    background-color: rgb(55, 51, 51)
-  }
-  
-  /* Navbar right (login/register buttons) */
-  .navbar-right {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .login-btn, .register-btn {
-    padding: 10px 20px;
-    background-color: rgb(34, 33, 33);
-    border: none;
-    color: #1DB954; /* Spotify Green */
-    font-weight: bold;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .login-btn:hover, .register-btn:hover {
-    background-color: rgb(55, 51, 51)
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 2%;
+  background-color: black; /* Spotify Green */
+  color: #1DB954;
+  width: 100%;
+}
 
+/* Navbar left (logo and links) */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  width: 35%; /* Logo and links take up 50% */
+}
+
+.logo {
+  font-size: 2rem;
+  margin-right: 20px;
+  font-weight: bolder;
+}
+
+.navbar-links {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar-link:hover {
+  color: white;
+}
+
+/* Navbar center (search field and button) */
+.navbar-center {
+  display: flex;
+  gap: 10px;
+  width: 30%; /* Search bar takes up 30% of the navbar */
+}
+
+.search-input {
+  padding: 10px;
+  border: 2px solid rgb(34, 33, 33);
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  width: 80%;
+}
+
+.search-btn {
+  padding: 10px 20px;
+  background-color: rgb(34, 33, 33);
+  border: none;
+  color: #1DB954; /* Spotify Green */
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+  background-color: rgb(55, 51, 51);
+}
+
+/* Navbar right (login/register buttons) */
+.navbar-right {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 20%; /* Login and register buttons take up 20% */
+}
+.login-btn, .register-btn, .logout-btn {
+  padding: 10px 20px;
+  background-color: rgb(34, 33, 33);
+  border: none;
+  color: #1DB954; /* Spotify Green */
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover, .register-btn:hover, .logout-btn:hover {
+  background-color: rgb(55, 51, 51);
+}
+
+.user-greeting {
+  color: black;
+  margin-right: 10px;
+}
+
+/* Responsive Styles - for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px 5%;
   }
-  
-  /* Responsive Styles - for smaller screens */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px 20px;
-    }
-  
-    .navbar-left, .navbar-right {
-      width: 100%;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-  
-    .navbar-links {
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .navbar-center {
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-    }
-  
-    .search-input {
-      width: 100%;
-    }
-  
-    .search-btn {
-      width: 100%;
-    }
-  
-    .login-btn, .register-btn {
-      width: 100%;
-      margin-top: 10px;
-    }
+
+  .navbar-left, .navbar-right {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 15px;
   }
-  
-  @media (max-width: 480px) {
-    .logo {
-      font-size: 1.5rem;
-    }
-  
-    .search-input {
-      padding: 8px;
-      font-size: 0.9rem;
-    }
-  
-    .search-btn {
-      padding: 8px 16px;
-    }
-  
-    .login-btn, .register-btn {
-      padding: 8px 16px;
-    }
+
+  .navbar-center {
+    width: 100%;
+    margin-bottom: 15px;
   }
+
+  .search-input {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .search-btn {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .login-btn, .register-btn {
+    width: 80%;
+    margin-top: 10px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar-center{
+    flex-direction: column;
+    gap: 0px;
+  }
+  .search-input {
+    padding: 8px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .search-btn {
+    padding: 8px 16px;
+    width: 100%;
+  }
+
   
+  .navbar-right {
+    flex-direction: column;
+    gap: 0px;
+  }
+  .login-btn, .register-btn, .logout-btn {
+    padding: 8px 16px;
+    width: 100%;
+  }
+}

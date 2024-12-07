@@ -15,7 +15,10 @@ function Navbar() {
             <Link to="/explore" className="navbar-link">Explore</Link>
           </li>
           <li>
-            <Link to="/events" className="navbar-link">List Your Event</Link>
+            <Link to="/events" className="navbar-link">Artist Bookings</Link>
+          </li>
+          <li>
+            <Link to="/event-management" className="navbar-link">Event Management</Link>
           </li>
         </ul>
       </div>
@@ -28,8 +31,8 @@ function Navbar() {
       <div className="navbar-right">
         {user ? (
           <div>
-            <span className="">Hello, {user.username}</span> 
-            <button className="login-btn" onClick={logout}>Logout</button> 
+            <span className="user-greeting">Hello, {user.username}</span>
+            <button className="logout-btn" onClick={logout}>Logout</button>
           </div>
         ) : (
           <>

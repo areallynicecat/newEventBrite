@@ -28,8 +28,8 @@ export const AuthProvider = ({ children }) => {
 
     // Function to log out the user and clear data from localStorage
     const logout = () => {
-        setUser(null); // Clear user state
-        localStorage.removeItem("auth"); // Remove auth data from localStorage
+        setUser(null); 
+        localStorage.removeItem("auth"); 
     };
 
     return (
