@@ -6,8 +6,10 @@ export const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   passwordHash: { type: String, required: true },
   role: {
-    type: { type: String, required: false },
-    permissions: { type: [String], default: 'user' },
+    type: String,
+    enum: ['user', 'organizer', 'attendee'], // Define allowed roles
+    default: 'user', // Default role
+    required: true,
   },
   socialAuth: {
     googleId: { type: String },

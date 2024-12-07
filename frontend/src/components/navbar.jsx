@@ -29,7 +29,7 @@ function Navbar() {
         {user ? (
           <div>
             <span className="">Hello, {user.username}</span> 
-            <button className="login-btn" onClick={logout}>Logout</button>
+            <button className="login-btn" onClick={logout}>Logout</button> 
           </div>
         ) : (
           <>
