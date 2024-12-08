@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/eventsPage.css';
 function EventManagement() {
   const [events, setEvents] = useState([]);
   const [filters, setFilters] = useState({ name: '', date: '', location: '', status: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEvents = async () => {
+      const authData = localStorage.getItem('auth');
+      const { token } = authData ? JSON.parse(authData) : {};
+      if (!token) {
+        navigate('/login');
+      }
+
       setLoading(true);
       try {
-        const authData = localStorage.getItem('auth');
-        const { token } = authData ? JSON.parse(authData) : {};
+        
         const queryParams = new URLSearchParams(filters).toString();
         const response = await fetch(`http://localhost:3005/events?${queryParams}`, {
           headers: { 'Authorization': `Bearer ${token}` },

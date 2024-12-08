@@ -12,7 +12,7 @@ function Navbar() {
         <h1 className="logo">EventBrite</h1>
         <ul className="navbar-links">
           <li>
-            <Link to="/explore" className="navbar-link">Explore</Link>
+            <Link to="/" className="navbar-link">Explore</Link>
           </li>
           <li>
             <Link to="/events" className="navbar-link">Artist Bookings</Link>
