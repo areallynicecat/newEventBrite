@@ -32,7 +32,7 @@ function UsersList() {
 
         const data = await response.json();
         setUsers(data.users);
-        console.log(data.users);
+        // console.log(data.users);
         setLoading(false);
       } catch (err) {
         setError(err.message);

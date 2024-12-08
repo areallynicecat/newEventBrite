@@ -23,6 +23,6 @@ eventRouter.put('/update-event/:id', authenticate, updateEvent);
 eventRouter.delete('/delete-event/:id', authenticate, deleteEvent);
 
 // change event status
-eventRouter.patch('/change-event-status/:id', authenticate, changeEventStatus);
+eventRouter.put('/change-event-status/:id', authenticate, changeEventStatus);
 
 export default eventRouter;
