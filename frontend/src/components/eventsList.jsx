@@ -34,8 +34,9 @@ function EventManagement() {
     };
 
     fetchEvents();
-  }, [filters]);
+  }, [filters]); // fetching events on every change of filters state
 
+  // setting the status on change
   const handleStatusChange = async (eventId, newStatus) => {
     try {
         const authData = localStorage.getItem('auth');
@@ -55,6 +56,7 @@ function EventManagement() {
     }
   };
 
+  // delete event
   const handleDeleteEvent = async (eventId) => {
     try {
       const response = await fetch(`/api/delete-event/${eventId}`, {

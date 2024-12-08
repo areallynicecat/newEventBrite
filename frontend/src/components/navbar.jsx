@@ -6,7 +6,8 @@ import '../styles/navbar.css';
 function Navbar() {
   const { user, logout } = useContext(AuthContext);
 
-  // Conditionally render links based on user role
+  // rendering navbar links in accordance with the role of the user that is logged in
+  // all private or only admin are behind middleware and can't be accessed through direct urls too
   const renderLinks = () => {
     if (!user) {
       return (

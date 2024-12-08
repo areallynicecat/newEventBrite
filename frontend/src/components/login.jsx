@@ -4,12 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/login.css'; 
 
 function Login() {
+  // states
   const { login } = useContext(AuthContext);  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate(); 
 
+
+  // sending credentials to backend
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

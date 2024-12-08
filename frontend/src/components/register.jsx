@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/register.css';
 
 function Register() {
+  // set states
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,7 +35,7 @@ function Register() {
       const data = await response.json();
 
       if (response.ok) {
-        // Redirect to login page after successful registration
+        // redirect ot login
         navigate('/login');
       } else {
         setError(data.message);

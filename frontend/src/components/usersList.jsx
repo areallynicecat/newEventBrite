@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/usersPage.css';
 
 function UsersList() {
+  // states
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  // fetching all users
   useEffect(() => {
     const fetchUsers = async () => {
       try {

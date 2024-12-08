@@ -22,13 +22,13 @@ export const register = async (req, res) => {
     const { username, email, password, profile } = req.body;
 
     try {
-        // Check if the user already exists
+        // user check | if it exists already
         const existingUser = await User.findOne({ $or: [{ email }, { username }] });
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        // Hash the password
+        // hash the password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -94,7 +94,7 @@ export const resetPassword = async (req, res) => {
             await Otp.deleteOne({ _id: otpDocument._id }); // deleting the expired otp
             return res.status(400).json({ message: 'OTP has expired' });
         }
-
+        console.log(email, otp, newPassword);
         // reset password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(newPassword, salt);

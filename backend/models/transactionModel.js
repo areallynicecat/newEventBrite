@@ -5,7 +5,7 @@ const TransactionSchema = new Schema({
     userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true },
     amount: { type: Number, required: true },
     paymentMethod: { type: String, required: true },
-    status: { type: String, enum: ['successful', 'failed'], default: 'successful' },
+    status: { type: String, enum: ['successful', 'failed', 'refunded'], default: 'successful' },
     transactionId: { type: String, unique: true, required: true },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },

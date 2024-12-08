@@ -10,8 +10,8 @@ userRouter.post('/register', register); // register
 userRouter.post('/reset-password', resetPassword); // reset password
 
 // admin only
-userRouter.get('/users', authenticate, getAllUsers); // get all users
-userRouter.put('/assign-role/:id', authenticate,  assignRole); // assign role
-userRouter.delete('/delete-user/:id', authenticate, deleteUser); // delete user
+userRouter.get('/users', authenticate, isAdmin, getAllUsers); // get all users
+userRouter.put('/assign-role/:id', authenticate, isAdmin, assignRole); // assign role
+userRouter.delete('/delete-user/:id', authenticate, isAdmin, deleteUser); // delete user
 
 export default userRouter;

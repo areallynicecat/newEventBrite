@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import "../styles/explore.css";
 
 const Explore = () => {
-  const [events, setEvents] = useState([]); // State to hold the events
-  const [loading, setLoading] = useState(true); // State to handle loading state
-  const [error, setError] = useState(""); // State to handle errors
+  // states
+  const [events, setEvents] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(""); 
 
   useEffect(() => {
     const fetchLatestEvents = async () => {
       try {
-        // Fetch latest events from the public API endpoint
+        // fetching latest events to show on explore (public)
         const response = await fetch("http://localhost:3005/latest-events", {
           method: "GET",
           headers: {
@@ -23,22 +24,22 @@ const Explore = () => {
 
         const data = await response.json();
         setEvents(data.events);
-        setLoading(false); // Set loading to false after fetching
+        setLoading(false); 
       } catch (error) {
         setError(error.message);
-        setLoading(false); // Set loading to false in case of error
+        setLoading(false); 
       }
     };
 
     fetchLatestEvents();
-  }, []); // Empty dependency array means this effect runs only once, on component mount
+  }, []); // loading on moutn only
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading message
+    return <div>Loading...</div>; 
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // Show error message
+    return <div>Error: {error}</div>; 
   }
 
   return (
@@ -48,13 +49,13 @@ const Explore = () => {
         {events.map((event) => (
           <div key={event._id} className="event-card">
             <img
-              src={event.eventImage} // Assuming eventImage holds the URL to the event image
+              src={event.eventImage} 
               alt={event.name}
               className="event-img"
             />
             <div className="event-info">
               <h3>{event.name}</h3>
-              <p>{new Date(event.date).toLocaleDateString()}</p> {/* Display formatted date */}
+              <p>{new Date(event.date).toLocaleDateString()}</p> 
               <p>{event.location}</p>
             </div>
           </div>
