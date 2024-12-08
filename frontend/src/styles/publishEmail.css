@@ -1,0 +1,134 @@
+/* Main container for the send bulk email form */
+.send-bulk-email-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #121212; /* Dark background similar to Spotify */
+    color: white;
+    min-height: 60vh;  /* Reduce height to 60% of the viewport */
+    max-height: 500px; /* Set a max-height to prevent excessive height */
+    border-radius: 10px;
+    border: 1px solid #333;  /* Slightly lighter border for contrast */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    overflow-y: auto;  /* Allow scrolling if content exceeds container height */
+  }
+  
+  /* Heading styles */
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1DB954; /* Spotify Green */
+  }
+  
+  /* Form and input styling */
+  form {
+    width: 100%;
+    background-color: #222; /* Dark background for the form */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Form groups for each input field */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for form labels */
+  label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #b3b3b3; /* Light gray for the labels */
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Styling for inputs and textarea fields */
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+  
+  /* Focus styles to highlight the fields when clicked */
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #1DB954; /* Highlight border in Spotify Green */
+  }
+  
+  /* Styling for the send button */
+  button.send-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #1DB954; /* Spotify's neon green */
+  }
+  
+  /* Button hover effect */
+  button.send-btn:hover {
+    background-color: #1ed760; /* Lighter neon green on hover */
+  }
+  
+  /* Success message styling */
+  .success-message {
+    color: #1DB954; /* Spotify's neon green */
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: #ff4c4c; /* Red color for error */
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .send-bulk-email-container {
+        padding: 15px;
+    }
+  
+    h2 {
+        font-size: 1.6rem;
+    }
+  
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .send-bulk-email-container {
+        padding: 0 15px;
+    }
+  
+    h2 {
+        font-size: 1.4rem;
+    }
+  
+    button.send-btn {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+  }
+      

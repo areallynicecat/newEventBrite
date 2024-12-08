@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import cors from 'cors';
 import express from 'express';
 import {config} from 'dotenv';
@@ -8,8 +7,7 @@ import connectToDatabase from './database/connectToDatabase.js';
 import ticketRouter from './routes/ticketRoutes.js';
 import transactionRouter from './routes/transactionRoutes.js';
 import reportRouter from './routes/reportRoutes.js';
-import sendPasswordResetEmail from './utils/passwordResetEmail.js';
-
+import utilRouter from './routes/utilRoutes.js';
 
 config(); // this will be used to access the port form .env later on
 
@@ -24,10 +22,11 @@ app.use(cors({
 // router setup
 app.use('/', userRouter); 
 app.use('/', eventRouter);
+app.use('/', utilRouter);
 app.use('/ticket', ticketRouter);
 app.use('/transaction', transactionRouter);
 app.use('/report', reportRouter);
-app.post('/send-reset-email', sendPasswordResetEmail);
+
 
 
 

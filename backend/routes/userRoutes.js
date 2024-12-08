@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { login, register, resetPassword, assignRole, deleteUser, getAllUsers } from "../controllers/userController.js";
+import { login, register, resetPassword, assignRole, deleteUser, getAllUsers, getAllUserEmails } from "../controllers/userController.js";
 import { authenticate, isAdmin } from "../middleware/auth.js";
 
 const userRouter = Router();
@@ -10,6 +10,7 @@ userRouter.post('/register', register); // register
 userRouter.post('/reset-password', resetPassword); // reset password
 
 // admin only
+userRouter.get('/emails',  getAllUserEmails);
 userRouter.get('/users', authenticate, isAdmin, getAllUsers); // get all users
 userRouter.put('/assign-role/:id', authenticate, isAdmin, assignRole); // assign role
 userRouter.delete('/delete-user/:id', authenticate, isAdmin, deleteUser); // delete user

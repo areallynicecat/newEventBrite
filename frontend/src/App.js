@@ -7,6 +7,8 @@ import UsersPage from "./pages/usersPage.jsx";
 import EventsPage from "./pages/eventsPage.jsx";
 import AnalyticsPage from "./pages/analyticsPage.jsx";
 import ForgotPasswordPage from "./pages/forgotPasswordPage.jsx";
+import PublishEmailPage from "./pages/publishEmailPage.jsx";
+
 
 function App()
 {
@@ -20,6 +22,7 @@ function App()
       <Route path="/event-management" element={<EventsPage />} />
       <Route path="/analytics" element={<AnalyticsPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/publish-email" element={<PublishEmailPage />} />
     </Routes>
     </>
   );

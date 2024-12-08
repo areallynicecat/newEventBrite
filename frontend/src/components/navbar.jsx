@@ -7,12 +7,11 @@ function Navbar() {
   const { user, logout } = useContext(AuthContext);
 
   // rendering navbar links in accordance with the role of the user that is logged in
-  // all private or only admin are behind middleware and can't be accessed through direct urls too
   const renderLinks = () => {
     if (!user) {
       return (
         <>
-            <li><Link to="/" className="navbar-link">Explore</Link></li>  
+          <li><Link to="/" className="navbar-link">Explore</Link></li>  
         </>
       );
     }
@@ -62,9 +61,17 @@ function Navbar() {
       <div className="navbar-right">
         {user ? (
           <>
-            <Link to="/profile" className="link-width-100">
-              <button className="user-btn">{user.username}</button>
-            </Link>
+            {user.role === "admin" ? (
+              // If user is admin, show the Publish button
+              <Link to="/publish-email" className="link-width-100">
+                <button className="publish-btn">Publish</button>
+              </Link>
+            ) : (
+              // If user is not admin, show the username button
+              <Link to="/profile" className="link-width-100">
+                <button className="user-btn">{user.username}</button>
+              </Link>
+            )}
             <Link to="/" className="link-width-100">
               <button className="register-btn" onClick={logout}>Logout</button>
             </Link>
@@ -75,7 +82,7 @@ function Navbar() {
               <button className="login-btn">Login</button>
             </Link>
             <Link to="/register" className="link-width-100">
-              <button className="register-btn" onClick={logout}>Register</button>
+              <button className="register-btn">Register</button>
             </Link>
           </>
         )}

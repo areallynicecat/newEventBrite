@@ -181,3 +181,23 @@ export const getAllUsers = async (req, res) => {
 };
 
 
+
+export const getAllUserEmails = async (req, res) => {
+    try {
+        // getting the email part fo all users
+        const users = await User.find({}, 'email');
+        
+        // handling the case with no
+        if (!users || users.length === 0) {
+            return res.status(404).json({ message: 'No users found' });
+        }
+
+        // creating a list of emails from the users
+        const emails = users.map(user => user.email);
+        
+        res.status(200).json({ message: 'User emails retrieved successfully', emails });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error fetching user emails', error: error.message });
+    }
+};
