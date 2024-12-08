@@ -1,42 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/explore.css";
 
 const Explore = () => {
-  const events = [
-    {
-      id: 1,
-      title: "Comedy Night",
-      img: "https://res.cloudinary.com/democratsabroad/image/upload/v1724916974/Comedy_Night_Banner_pr9qab.png", // Replace with actual image URLs
-      date: "Every Wednesday",
-      location: "Pechs, Karachi",
-    },
-    {
-      id: 2,
-      title: "Karachi Mix Plate Tour",
-      img: "https://via.placeholder.com/400x200",
-      date: "Every Sunday 2024",
-      location: "Karachi",
-    },
-    {
-      id: 3,
-      title: "Global AI Summit",
-      img: "https://via.placeholder.com/400x200",
-      date: "Dec 18th",
-      location: "Karachi",
-    },
-    // Add more events as needed
-  ];
+  const [events, setEvents] = useState([]); // State to hold the events
+  const [loading, setLoading] = useState(true); // State to handle loading state
+  const [error, setError] = useState(""); // State to handle errors
+
+  useEffect(() => {
+    const fetchLatestEvents = async () => {
+      try {
+        // Fetch latest events from the public API endpoint
+        const response = await fetch("http://localhost:3005/latest-events", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch events.");
+        }
+
+        const data = await response.json();
+        setEvents(data.events);
+        setLoading(false); // Set loading to false after fetching
+      } catch (error) {
+        setError(error.message);
+        setLoading(false); // Set loading to false in case of error
+      }
+    };
+
+    fetchLatestEvents();
+  }, []); // Empty dependency array means this effect runs only once, on component mount
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading message
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // Show error message
+  }
 
   return (
     <div className="explore">
       <h2 className="explore-title">Events</h2>
       <div className="explore-grid">
         {events.map((event) => (
-          <div key={event.id} className="event-card">
-            <img src={event.img} alt={event.title} className="event-img" />
+          <div key={event._id} className="event-card">
+            <img
+              src={event.eventImage} // Assuming eventImage holds the URL to the event image
+              alt={event.name}
+              className="event-img"
+            />
             <div className="event-info">
-              <h3>{event.title}</h3>
-              <p>{event.date}</p>
+              <h3>{event.name}</h3>
+              <p>{new Date(event.date).toLocaleDateString()}</p> {/* Display formatted date */}
               <p>{event.location}</p>
             </div>
           </div>

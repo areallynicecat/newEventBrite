@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/usersPage.css';
-import { Navigate, useNavigate } from 'react-router-dom';
-
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -19,7 +18,6 @@ function UsersList() {
           navigate('/login');
           setError('No authorization token found');
           setLoading(false);
-
           return;
         }
 
@@ -31,14 +29,12 @@ function UsersList() {
           },
         });
 
-        
         if (!response.ok) {
           throw new Error('Failed to fetch users');
         }
 
         const data = await response.json();
         setUsers(data.users);
-        // console.log(data.users);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -140,6 +136,7 @@ function UsersList() {
                       >
                         <option value="attendee">Attendee</option>
                         <option value="organizer">Organizer</option>
+                        <option value="admin">Admin</option>
                       </select>
                     </td>
                     <td>

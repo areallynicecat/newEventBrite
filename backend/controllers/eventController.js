@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 // create event
 export const createEvent = async (req, res) => {
-    const { name, description, date, location, ticketTypes, organizerId, eventImage, eventImageType } = req.body;
+    const { name, description, date, location, ticketTypes, organizerId, eventImage } = req.body;
 
     try {
         const newEvent = new Event({
@@ -13,8 +13,7 @@ export const createEvent = async (req, res) => {
             location,
             ticketTypes,
             organizerId,
-            eventImage,
-            eventImageType
+            eventImage
         });
 
         await newEvent.save();
@@ -41,6 +40,26 @@ export const getAllEvents = async (req, res) => {
         res.status(200).json({ events });
     } catch (error) {
         res.status(500).json({ message: 'Error fetching events', error: error.message });
+    }
+};
+
+
+// get latest 10 events
+export const getLatestEvents = async (req, res) => {
+    try {
+        // Fetch the 10 most recent events, sorted by date in descending order
+        const latestEvents = await Event.find()
+            .sort({ date: -1 })  // Sort by date in descending order (latest first)
+            .limit(10)  // Limit to the 10 most recent events
+            .populate('organizerId', 'username email');  // Populate organizer info
+
+        if (!latestEvents || latestEvents.length === 0) {
+            return res.status(404).json({ message: 'No events found' });
+        }
+
+        res.status(200).json({ events: latestEvents });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching latest events', error: error.message });
     }
 };
 

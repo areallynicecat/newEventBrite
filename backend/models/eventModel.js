@@ -8,8 +8,7 @@ const EventSchema = new Schema({
   location: { type: String, required: true },
   status: { type: String, enum: ['draft', 'approved', 'rejected', 'completed'], default: 'draft' },
   organizerId: { type: mongoose.Types.ObjectId, ref: 'User', required: true },
-  eventImage: { type: Buffer },  // Store image as binary data
-  eventImageType: { type: String },  // Store MIME type (e.g., 'image/jpeg')
+  eventImage: { type: String },  // Now stores the URL of the image
   ticketTypes: [
     {
       type: { type: String, required: true },
