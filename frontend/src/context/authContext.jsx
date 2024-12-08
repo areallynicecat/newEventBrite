@@ -1,35 +1,26 @@
-import { createContext, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const location = useLocation();
+    const [user, setUser] = useState(() => {
+        // Get the authData (both token and user) from localStorage
+        const authData = localStorage.getItem("auth");
+        return authData ? JSON.parse(authData).user : null; // Retrieve the user
+    });
 
-    useEffect(() => {
-        const fetchAuthStatus = () => {
-            const authData = JSON.parse(localStorage.getItem("auth"));
-            if (authData) {
-                setUser(authData.user); // Set user from localStorage
-            } else {
-                setUser(null); // Clear user if no auth data
-            }
-        };
-
-        fetchAuthStatus();
-    }, [location]);
-
-    // Function to log in the user and store data in localStorage
     const login = (userData) => {
-        setUser(userData.user); // Set the user state
-        localStorage.setItem("auth", JSON.stringify(userData)); // Store auth data in localStorage
+        setUser(userData.user); // Set user state
+        const { token, user } = userData;
+        console.log(token);
+
+        // Store both the token and user data in localStorage
+        localStorage.setItem("auth", JSON.stringify({ token, user }));
     };
 
-    // Function to log out the user and clear data from localStorage
     const logout = () => {
-        setUser(null); 
-        localStorage.removeItem("auth"); 
+        setUser(null); // Remove user
+        localStorage.removeItem("auth"); // Remove auth data (token and user) from localStorage
     };
 
     return (

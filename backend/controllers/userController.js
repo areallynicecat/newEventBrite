@@ -163,5 +163,21 @@ export const deleteUser = async (req, res) => {
 };
 
 
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({}, '-passwordHash'); 
+        
+        // in case of no users
+        if (!users || users.length === 0) {
+            return res.status(404).json({ message: 'No users found' });
+        }
+
+        
+        res.status(200).json({ message: 'Users retrieved successfully', users });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Error fetching users', error: error.message });
+    }
+};
 
 

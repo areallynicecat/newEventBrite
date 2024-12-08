@@ -4,7 +4,7 @@ import { AuthContext } from "../context/authContext.jsx";
 import '../styles/navbar.css';
 
 function Navbar() {
-  const { user, logout } = useContext(AuthContext); 
+  const { user, logout } = useContext(AuthContext);
 
   return (
     <nav className="navbar">
@@ -30,16 +30,26 @@ function Navbar() {
 
       <div className="navbar-right">
         {user ? (
-          <div>
-            <span className="user-greeting">Hello, {user.username}</span>
+          <>
+            <Link to="/login" className="link-width-100">
+              <button className="user-btn">{user.username}</button>
+            </Link>
+            <Link to="/" className="link-width-100">
+              <button className="register-btn" onClick={logout}>Logout</button>
+            </Link>
+            {/* <Link to='/profile' className="link-width-100">
+              <button className="login-btn">{user.username}</button>
+            </Link>
+            <Link to='/' className="link-width-100">
             <button className="logout-btn" onClick={logout}>Logout</button>
-          </div>
+            </Link> */}
+          </>
         ) : (
           <>
-            <Link to="/login">
+            <Link to="/login" className="link-width-100">
               <button className="login-btn">Login</button>
             </Link>
-            <Link to="/register">
+            <Link to="/register" className="link-width-100">
               <button className="register-btn">Register</button>
             </Link>
           </>

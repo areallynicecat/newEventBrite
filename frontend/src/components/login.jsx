@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
 import { useNavigate } from 'react-router-dom'; 
+import '../styles/login.css'; 
 
 function Login() {
   const { login } = useContext(AuthContext);  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // is to be used for redirection
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,26 +24,25 @@ function Login() {
         const data = await response.json();
 
         if (response.ok) {
-            // storing user and token in the context  | using that for managing the user that is logged in
             login({
-                user: data.user // this is the complete user object | might remove the password later on
+                user: data.user,
+                token : data.token
             });
-            navigate('/'); // change path to home
+            navigate('/'); 
         } else {
             setError(data.message); 
         }
     } catch (error) {
         setError('An error occurred during login');
     }
-};
-
+  };
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>Login to Your Account</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -50,9 +50,10 @@ function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="Enter your email"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -60,10 +61,16 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Enter your password"
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="login-btn">Login</button>
       </form>
+      
+      <div className="login-footer">
+        <button onClick={() => navigate('/forgot-password')} className="register-btn">Forgot your password?</button>
+        <button onClick={() => navigate('/register')} className="register-btn">Register</button>
+      </div>
     </div>
   );
 }

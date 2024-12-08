@@ -1,0 +1,128 @@
+/* Overall signup container */
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #121212; /* Dark background */
+    color: white;
+    min-height: 100vh;
+}
+
+/* Heading styles */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1DB954; /* Spotify Green */
+}
+
+/* Error message styles */
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Form and input styling */
+form {
+    width: 100%;
+    max-width: 400px;
+    background-color: #222; /* Dark background for the form */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1DB954; /* Highlight border in Spotify Green */
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #1DB954; /* Spotify Green */
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1a9934; /* Darker green on hover */
+}
+
+/* Footer for the signup page */
+.signup-footer {
+    margin-top: 20px;
+}
+
+.login-btn {
+    background: none;
+    color: #1DB954;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.login-btn:hover {
+    color: #1a9934; /* Darker green on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}

@@ -17,12 +17,12 @@ eventRouter.get('/event/:id', authenticate, getEventById);
 eventRouter.post('/create-event', authenticate, createEvent);
 
 // route to update an
-eventRouter.put('/update-event/:id', authenticate, isAdmin, updateEvent);
+eventRouter.put('/update-event/:id', authenticate, updateEvent);
 
 // delete event
-eventRouter.delete('/delete-event/:id', authenticate, isAdmin, deleteEvent);
+eventRouter.delete('/delete-event/:id', authenticate, deleteEvent);
 
 // change event status
-eventRouter.patch('/change-event-status/:id', authenticate, isAdmin, changeEventStatus);
+eventRouter.patch('/change-event-status/:id', authenticate, changeEventStatus);
 
 export default eventRouter;

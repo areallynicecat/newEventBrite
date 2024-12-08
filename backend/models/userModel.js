@@ -7,8 +7,8 @@ export const UserSchema = new Schema({
   passwordHash: { type: String, required: true },
   role: {
     type: String,
-    enum: ['user', 'organizer', 'attendee'], // Define allowed roles
-    default: 'user', // Default role
+    enum: ['admin', 'organizer', 'attendee'], // Define allowed roles
+    default: 'attendee', // Default role
     required: true,
   },
   socialAuth: {

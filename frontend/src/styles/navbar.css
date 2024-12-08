@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 2%;
-  background-color: black; /* Spotify Green */
+  background-color: black;
   color: #1DB954;
   width: 100%;
 }
@@ -13,7 +13,7 @@
 .navbar-left {
   display: flex;
   align-items: center;
-  width: 35%; /* Logo and links take up 50% */
+  width: 35%;
 }
 
 .logo {
@@ -43,8 +43,9 @@
 /* Navbar center (search field and button) */
 .navbar-center {
   display: flex;
+  align-items: center;
   gap: 10px;
-  width: 30%; /* Search bar takes up 30% of the navbar */
+  width: 30%;
 }
 
 .search-input {
@@ -59,10 +60,11 @@
 }
 
 .search-btn {
-  padding: 10px 20px;
   background-color: rgb(34, 33, 33);
+  height: 20%;
+  width: 40%;
   border: none;
-  color: #1DB954; /* Spotify Green */
+  color: #1DB954;
   font-weight: bold;
   border-radius: 20px;
   cursor: pointer;
@@ -76,19 +78,32 @@
 /* Navbar right (login/register buttons) */
 .navbar-right {
   display: flex;
+  align-items: center;
   gap: 20px;
   justify-content: center;
-  width: 20%; /* Login and register buttons take up 20% */
+  width: 20%;
 }
-.login-btn, .register-btn, .logout-btn {
+
+.link-width-100{
+  width: 100%;
+  
+}
+
+.login-btn, .register-btn, .logout-btn .user-btn {
   padding: 10px 20px;
   background-color: rgb(34, 33, 33);
   border: none;
-  color: #1DB954; /* Spotify Green */
+  color: #1DB954;
   font-weight: bold;
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+.user-btn {
+  background-color: #1DB954;
+  color: rgb(34, 33, 33);
+  border-radius: 20px;
 }
 
 .login-btn:hover, .register-btn:hover, .logout-btn:hover {
@@ -96,7 +111,7 @@
 }
 
 .user-greeting {
-  color: black;
+  color: white;
   margin-right: 10px;
 }
 
@@ -146,10 +161,11 @@
     font-size: 1.5rem;
   }
 
-  .navbar-center{
+  .navbar-center {
     flex-direction: column;
     gap: 0px;
   }
+
   .search-input {
     padding: 8px;
     font-size: 0.9rem;
@@ -159,13 +175,14 @@
   .search-btn {
     padding: 8px 16px;
     width: 100%;
+    height: 100%;
   }
 
-  
   .navbar-right {
     flex-direction: column;
     gap: 0px;
   }
+
   .login-btn, .register-btn, .logout-btn {
     padding: 8px 16px;
     width: 100%;

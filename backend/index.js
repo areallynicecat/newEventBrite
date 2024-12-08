@@ -10,7 +10,10 @@ config(); // this will be used to access the port form .env later on
 
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000', // Your React app URL
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow the Authorization header
+  }));
 
 // router setup
 app.use('/', userRouter); 
